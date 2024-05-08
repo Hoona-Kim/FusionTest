@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class IdleState : StateMachineBehaviour
 {
-    float timer, timerThreshold;
+    float timer;
+    float timerThreshold = 2;
+    float chaseDistance = 8;
+    Transform player;
+    float angle;
+    float visionAngle = 120.0f;
+    Vector3 playerDirection;
+    Vector3 forwardDirection;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         timer = 0;
-        timerThreshold = 2;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -20,6 +27,15 @@ public class IdleState : StateMachineBehaviour
         if(timer > timerThreshold)
         {
             animator.SetBool("isPatrol", true);
+        }
+
+        float distance = Vector3.Distance(player.position, animator.transform.position);
+        playerDirection = player.position - animator.transform.position;
+        forwardDirection = animator.transform.forward;
+        angle = Vector3.Angle(forwardDirection, playerDirection);
+        if (distance < chaseDistance && angle <= visionAngle / 2.0f)
+        {
+            animator.SetBool("isChase", true);
         }
     }
 
