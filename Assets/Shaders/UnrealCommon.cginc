@@ -2777,3 +2777,5 @@ bool GetPathTracingIsIndirectVolume()
 #define WSLength LWCLength
 #define WSRcpLengthDemote LWCRcpLength
 #define WSNormalizeDemote LWCNormalize
+
+#define GetTileOffsetUV( uv, Tex_ST ) uv * Tex_ST.xy + Tex_ST.zw
