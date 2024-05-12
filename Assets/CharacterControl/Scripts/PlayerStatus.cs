@@ -11,7 +11,7 @@ public class PlayerStatus : MonoBehaviour
     public void TakeDamage(int damage)
     {
         HP -= damage;
-        if (HP <= 0)
+        /*if (HP <= 0)
         {
             animator.SetTrigger("death");
             GetComponent<CapsuleCollider>().enabled = false;
@@ -21,11 +21,6 @@ public class PlayerStatus : MonoBehaviour
         else
         {
             animator.SetTrigger("hit");
-        }
-    }
-
-    public void Block()
-    {
-        animator.SetTrigger("block");
+        }*/
     }
 }

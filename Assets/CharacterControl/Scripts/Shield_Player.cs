@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Shield_Player : MonoBehaviour
 {
+    public Animator character;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,10 @@ public class Shield_Player : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Block()
+    {
+        character.SetTrigger("block");
     }
 }

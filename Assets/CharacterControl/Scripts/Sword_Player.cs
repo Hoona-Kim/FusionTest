@@ -23,7 +23,7 @@ public class Sword_Player : MonoBehaviour
     {
         if (other.tag == "EnemyShield")
         {
-            other.GetComponent<EnemyStatus>().Block();
+            other.GetComponent<Shield_Enemy>().Block();
         }
         else if (other.tag == "Enemy")
         {

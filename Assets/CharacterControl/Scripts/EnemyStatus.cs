@@ -22,9 +22,4 @@ public class EnemyStatus : MonoBehaviour
             animator.SetTrigger("hit");
         }
     }
-
-    public void Block()
-    {
-        animator.SetTrigger("block");
-    }
 }

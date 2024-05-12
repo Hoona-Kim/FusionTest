@@ -15,7 +15,7 @@ public class PoseEstimator : IDisposable {
     private IBackend concatBackend;
     private BackendType backend;
     private const int numJoints = 17;
-    private const int numFrames = 60;
+    private const int numFrames = 20;
 
     private TensorFloat inputTensor = null;
     private TensorFloat inputTwoDTensor = null;
