@@ -11,7 +11,7 @@ public class AttackState_EnemyAI : StateMachineBehaviour
     {
 
         playerLocation = GameObject.FindGameObjectWithTag("Player").transform;
-        animator.transform.LookAt(playerLocation);
+        //animator.transform.LookAt(playerLocation);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
