@@ -11,16 +11,15 @@ public class PlayerStatus : MonoBehaviour
     public void TakeDamage(int damage)
     {
         HP -= damage;
-        /*if (HP <= 0)
+        if (HP <= 0)
         {
             animator.SetTrigger("death");
             GetComponent<CapsuleCollider>().enabled = false;
-            animator.GetComponent<CharacterControl>().ikActive = false;
             isDead = true;
         }
         else
         {
             animator.SetTrigger("hit");
-        }*/
+        }
     }
 }

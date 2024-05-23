@@ -30,7 +30,6 @@ public class Sword_Player : MonoBehaviour
             other.GetComponent<EnemyStatus>().TakeDamage(weaponDamage);
             if (other.GetComponent<EnemyStatus>().isDead)
             {
-                character.GetComponent<CharacterControl>().ikActive = false;
                 character.SetTrigger("win");
             }
         }

@@ -3,8 +3,6 @@ using Unity.Sentis;
 using FF = Unity.Sentis.Functional;
 using Unity.VisualScripting;
 using System;
-using System.Collections.Generic;
-using NUnit.Framework.Interfaces;
 
 public class PoseEstimator : IDisposable {
     
@@ -15,7 +13,7 @@ public class PoseEstimator : IDisposable {
     private IBackend concatBackend;
     private BackendType backend;
     private const int numJoints = 17;
-    private const int numFrames = 20;
+    private const int numFrames = 26;
 
     private TensorFloat inputTensor = null;
     private TensorFloat inputTwoDTensor = null;
@@ -69,7 +67,7 @@ public class PoseEstimator : IDisposable {
 
         /*
             COCO:
-            0: nose 1: Leye 2: Reye 3: Lear 4Rear
+            0: nose 1: Leye 2: Reye 3: Lear 4: Rear
             5: Lsho 6: Rsho 7: Lelb 8: Relb 9: Lwri
             10: Rwri 11: Lhip 12: Rhip 13: Lkne 14: Rkne
             15: Lank 16: Rank
@@ -105,11 +103,8 @@ public class PoseEstimator : IDisposable {
                 y[..,..,16..,..] = input[..,..,10..11,..];
                 var output = threeDPoseModel.Forward(y)[0];
                 
-                // scale 3D outputs
+                // Invert all axes of 3D outputs
                 output[..,..,..,..] *= -1;
-                // output[..,..,..,..1] *= 1.8f; 
-                // output[..,..,..,1..2] *= 1.1f;
-                // output[..,..,..,2..] *= 2.5f;
 
                 return output;
             },
@@ -149,9 +144,9 @@ public class PoseEstimator : IDisposable {
 
             for (int idx = 0; idx < numJoints; idx++) {
 
-                threeDJointsVector[idx].x = threeDJointsTensor[0,0,idx,0];
-                threeDJointsVector[idx].y = threeDJointsTensor[0,0,idx,1];
-                threeDJointsVector[idx].z = threeDJointsTensor[0,0,idx,2];
+                threeDJointsVector[idx].x = threeDJointsTensor[0,idx,0];
+                threeDJointsVector[idx].y = threeDJointsTensor[0,idx,1];
+                threeDJointsVector[idx].z = threeDJointsTensor[0,idx,2];
 
             }
 

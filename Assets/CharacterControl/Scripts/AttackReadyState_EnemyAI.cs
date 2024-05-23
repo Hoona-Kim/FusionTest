@@ -25,6 +25,7 @@ public class AttackReadyState_EnemyAI : StateMachineBehaviour
         {
             animator.SetBool("isAttack", true);
             attackType = Random.Range(1, 4);
+            attackType = 2; // 시연을 위해 추가한 부분! 나중에 꼭 삭제!!
             animator.SetInteger("attackType", attackType);
         }
     }
